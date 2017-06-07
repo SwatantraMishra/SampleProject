@@ -1,0 +1,14 @@
+<header class="row spacing">
+    <nav>
+
+         <ul class="nav nav-tabs">
+             <li routerActiveLink="active"><a [routerLink]="['signup']">SignUp</a></li>
+            <li routerActiveLink="active"><a [routerLink]="['signin']">SignIn</a></li>
+            <li routerActiveLink="active"><a [routerLink]="['logout']">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="row spacing">
+<router-outlet></router-outlet>
+    </div>
+    
+</header>
