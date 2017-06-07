@@ -15,6 +15,10 @@ import {SigninComponent} from './user/signin.component'
 import {SignupComponent} from './user/signup.component'
 import {SpeechesComponent} from "./speech/speeches.component";
 import {SpeechListComponent} from "./speech/speech-list.component";
+import {UserListComponent} from "./user/user-list.component";
+import {UserMiddlePartComponent} from "./user/user-middle-part.component";
+import {UsersComponent} from "./user/users.component";
+import {UserInputComponent} from "./user/user-input.component";
 @NgModule({
     declarations: [
         AppComponent,
@@ -28,7 +32,11 @@ import {SpeechListComponent} from "./speech/speech-list.component";
         SigninComponent,
         SignupComponent,
         SpeechesComponent,
-        SpeechListComponent
+        SpeechListComponent,
+        UserListComponent,
+        UserMiddlePartComponent,
+        UsersComponent,
+        UserInputComponent
     ],
     imports: [BrowserModule,FormsModule,routing,ReactiveFormsModule],
     bootstrap: [AppComponent]
