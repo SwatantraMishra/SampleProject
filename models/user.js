@@ -1,13 +1,13 @@
-var mongoose=require('mongoose');
-var Schema=mongoose.Schema;
-var monooseUniqueValidator=require('mongoose-unique-validator')
-var schema=new Schema({
-	firstname:{type:String,required:true},
-	lastname:{type:String,required:true},
-	email:{type:String,required:true,unique:true},
-	password:{type:String,required:true},
-	messages:{type:Schema.Types.ObjectId,ref:'Message'}
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var mongooseUniqueValidator = require('mongoose-unique-validator');
+
+var schema = new Schema({
+	user_id		: {  type : Number, required : true },
+	name 		: {  type : String, required : true  },
+	email		: {  type : String, required : true, unique : true }
 });
 
-schema.plugin(monooseUniqueValidator)
-module.exports=mongoose.model('User',schema);
+schema.plugin(mongooseUniqueValidator);
+
+module.exports = mongoose.model('User',schema);

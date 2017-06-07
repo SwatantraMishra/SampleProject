@@ -1,10 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var User=require('../models/user');
+
 router.get('/', function (req, res, next) {
 	
    res.render('index');
 });
+
+router.get('/', function (req, res, next) {
+	
+   res.render('index');
+});
+
 router.get('/node', function (req, res, next) {
 	User.findOne({},function(err,doc){
 		if(err)
@@ -29,4 +36,5 @@ router.post('/', function (req, res, next) {
   res.redirect('/');
 
 });
+
 module.exports = router;

@@ -1,18 +1,16 @@
-export class Speech
-{
-    title:string;
-    author:string;
-    date:string;
-    file:[string];
-    description:string;
+export class Speech{
+    
+    title   : String;
+    user_id : Number;
+    date    : Date;
+    file    : [String];
+    description : String;
 
-    constructor(title:string,author:string,date:string,file:[string],description:string)
-    {
-    this.title=title;
-    this.author=author;
-    this.date=date;
-    this.file=file;
-    this.description=description;
-
+    constructor( title : String, user_id : Number, date : Date, file : [String], description : String){
+        this.title       = title;
+        this.user_id     = user_id;
+        this.date        = date;
+        this.file        = file;
+        this.description = description;
     }
 }
