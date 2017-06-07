@@ -19,6 +19,8 @@ import {UserListComponent} from "./user/user-list.component";
 import {UserMiddlePartComponent} from "./user/user-middle-part.component";
 import {UsersComponent} from "./user/users.component";
 import {UserInputComponent} from "./user/user-input.component";
+import {SpeechMiddlePartComponent} from "./speech/speech-middle-part.component";
+import {SpeechInputComponent} from "./speech/speech-input.component";
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,7 +38,9 @@ import {UserInputComponent} from "./user/user-input.component";
         UserListComponent,
         UserMiddlePartComponent,
         UsersComponent,
-        UserInputComponent
+        UserInputComponent,
+        SpeechMiddlePartComponent,
+        SpeechInputComponent
     ],
     imports: [BrowserModule,FormsModule,routing,ReactiveFormsModule],
     bootstrap: [AppComponent]
