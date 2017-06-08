@@ -3,7 +3,7 @@ import {Component} from "@angular/core";
     selector:'app-users',
     template:
             `
-        <div class="row" style="margin-top: 10px">
+        <div class="col-sm-12" style="margin-top: 10px">
             <div class="col-sm-4"> <app-user-list></app-user-list> </div>
             <div class="col-sm-8"> <app-user-middle-part></app-user-middle-part> </div>
            

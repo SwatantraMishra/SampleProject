@@ -36,7 +36,6 @@ export class UserService{
                 alert("An error occurred! Please try again later.");
                 console.log("Error=>",JSON.stringify(error.json()));
         });
- 
     }
 
     updateUser(data: any){

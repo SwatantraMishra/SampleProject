@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from "./app.component";
 
@@ -35,6 +37,7 @@ import {routing} from './app.routing'
 @NgModule({
     declarations: [
         AppComponent,
+        FileSelectDirective,
         MessageComponent,
         MessageListComponent,
         MessageInputComponent,
