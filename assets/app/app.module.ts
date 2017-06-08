@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from "./app.component";
 
@@ -23,6 +23,7 @@ import {UserListComponent} from "./user/user-list.component";
 import {UserMiddlePartComponent} from "./user/user-middle-part.component";
 import {UsersComponent} from "./user/users.component";
 import {UserInputComponent} from "./user/user-input.component";
+import {UserEditComponent} from "./user/user-edit.component"
 
 // SPEECH
 import {SpeechesComponent} from "./speech/speeches.component";
@@ -51,13 +52,15 @@ import {routing} from './app.routing'
         UsersComponent,
         UserInputComponent,
         SpeechMiddlePartComponent,
-        SpeechInputComponent
+        SpeechInputComponent,
+        UserEditComponent
     ],
     imports: [  BrowserModule,
                 FormsModule,
                 routing,
                 ReactiveFormsModule,
-                HttpModule
+                HttpModule,
+                JsonpModule
             ],
     bootstrap: [AppComponent]
 })

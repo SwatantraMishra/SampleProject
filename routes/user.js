@@ -76,7 +76,6 @@ router.post('/update', function (req, res, next) {
             return res.status(200).end( JSON.stringify({"message":"Data updated successfully"}));
         }
      });
-     return res.status(200).end( JSON.stringify({"message":"Data updated successfully"}));
 });
 
 function makeid(){

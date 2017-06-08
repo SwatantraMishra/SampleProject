@@ -1,14 +1,17 @@
 import { Injectable, Input } from "@angular/core";
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Http, Headers, Response, RequestOptions, Jsonp } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/operator/add/map';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 import { Users } from "./user.model";
 import { NgForm } from '@angular/forms';
 
 @Injectable()
 export class UserService{
 
-    constructor(private http : Http){
+    constructor(private http : Http,private jsonp: Jsonp){
     }
 
     public users:any;
@@ -39,7 +42,33 @@ export class UserService{
  
     }
 
-    updateUser(data: any){
+    getJsonResp(term: string){
+
+        let headers = new Headers({'X-Mashape-Key':'Ns0SkjyRRomshq3PgEnGoz2Zkc71p1CYnWajsnphGctvrGt46W'});
+    headers.append( 'Accept', 'application/json');
+
+
+        // var search = new URLSearchParams()
+        // search.set('action', 'opensearch');
+        // search.set('search', term);
+        // search.set('format', 'json');
+        // return this.jsonp
+        //             .get('http://localhost:3000/users?callback=JSONP_CALLBACK',{  headers: headers })
+        //             .toPromise()
+        //             .then((response) => { console.log("Response ==>",response); response.json();})
+        //             .catch( (error =>  { console.log("Error ==> ",error); }) );
+
+        return this.http.get('/users')
+        .map(this.extractData);
+    }
+
+    private extractData(res: Response) {
+        let body = res.json();
+        console.log("Body ==> ",body);
+        return body;
+    } 
+
+    updateUser(data: any,f: NgForm){
         let header = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: header });
 
@@ -48,6 +77,8 @@ export class UserService{
         this.http.post('/update',body, options).subscribe(data => {
                     alert('User details updated successfully.');
                     console.log("updateUser() =>",data);
+                    f.resetForm();
+                    window.location.href = "user";
             }, error => {
                 alert("An error occurred! Please try again later.");
                 console.log("Error=>",error.json());
@@ -70,25 +101,13 @@ export class UserService{
         return [];
     }
 
-    deleteUser(user_id: Number){
-        let header = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: header });
-
-        return this.http.get('/delete/'+user_id, options).subscribe(data => {
-                    console.log("deleteUser() =>",data);
-            }, error => {
-                alert("An error occurred! Please try again later.");
-                console.log(" Error=>",JSON.stringify(error.json()));
-                return [];              
-        });
-    }
-
-    getSpecificUserDetails(user_id:String){
+    getSpecificUserDetails(user_id:Number){
         let header = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: header });
 
         return this.http.get('/users/'+user_id, options).subscribe(data => {
-                    this.setUserDetails(data['_body']);
+                    console.log("getSpecificUserDetails() => ",data );
+                    this.setUserDetails( JSON.parse(data['_body']));
             }, error => {
                 alert("An error occurred! Please try again later.");
                 console.log("(getSpecificUserDetails): Error=>",JSON.stringify(error.json()));
@@ -97,11 +116,13 @@ export class UserService{
     }
 
     getLatestUserData(){
+        console.log("USER DETAILS : ",this.userDetails);
         return this.userDetails;
     }
 
     setData(data){
-        this.users = data['_body'];
+        data = JSON.parse(data['_body']);
+        this.users = data;
     }
 
     setUserDetails(data){

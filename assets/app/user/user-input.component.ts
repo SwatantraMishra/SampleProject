@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { UserService } from "./user.service";
 import { Users } from "./user.model";
 
+
 @Component({
     selector:'app-user-input',
     templateUrl:'user-input-component.html'
@@ -22,7 +23,7 @@ export class UserInputComponent{
 
     onSubmit(f: NgForm) {
         if(f.valid){
-            console.log( "f.value =>",f.value );
+            // console.log( "f.value =>",f.value );
             var user_data = new Users(f.value.name, f.value.email);
             this.userService.addUser(user_data,f);
         }

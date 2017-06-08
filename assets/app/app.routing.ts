@@ -8,17 +8,13 @@ import {UsersComponent} from "./user/users.component";
 import {USER_ROUTES} from "./user/user.router";
 import {SPEECH_ROUTES} from "./speech/speech.router";
 
-const APP_ROUTE:Routes=[
-    {path:'',redirectTo:'/messages',pathMatch:'full'},
-    { path:'messages',component:MessagesComponent},
-    { path:'speech',component:SpeechesComponent,children:SPEECH_ROUTES},
-    { path:'user',component:UsersComponent,children:USER_ROUTES},
-    {path:'auth',component:AuthenticationComponent,children:AUTH_ROUTES}
 
+const APP_ROUTE:Routes=[
+    { path:''           , redirectTo:'/user',               pathMatch:'full'        },
+    { path:'messages'   , component:MessagesComponent                                   },
+    { path:'speech'     , component:SpeechesComponent,          children:SPEECH_ROUTES  },
+    { path:'user'       , component:UsersComponent,             children:USER_ROUTES    },
+    { path:'auth'       , component:AuthenticationComponent,    children:AUTH_ROUTES    }
 ]
 
 export const routing=RouterModule.forRoot(APP_ROUTE);
-
-
-
-

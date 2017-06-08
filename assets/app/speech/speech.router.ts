@@ -7,5 +7,4 @@ export const SPEECH_ROUTES:Routes=[
     {path:'speechdetails',component:SpeechInputComponent},
     {path:'Add',component:SpeechInputComponent},
     {path:'Edit',component:SpeechInputComponent}
-
 ]
